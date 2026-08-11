@@ -1,6 +1,6 @@
 {
   "name": "marga-cli",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Command-line tools for the Marga learning-dashboard template.",
   "license": "MIT",
   "author": "meenumathew",
