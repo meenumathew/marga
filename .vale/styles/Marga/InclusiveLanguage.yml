@@ -1,0 +1,22 @@
+extends: substitution
+message: "Use inclusive wording: consider '%s' instead of '%s'."
+level: error
+ignorecase: true
+swap:
+  (?:alumna|alumnus): graduate
+  (?:alumnae|alumni): graduates
+  authoress: author
+  chairman: chair
+  fresh(?:m[ae]n|wom[ae]n): first-year student
+  lady lawyer: lawyer
+  mankind: humanity
+  manmade: manufactured
+  manpower: personnel
+  middleman: intermediary
+  ombuds(?:man|woman): ombuds
+  salesman: salesperson
+  saleswoman: salesperson
+  stewardess: flight attendant
+  waitress: waiter
+  woman doctor: doctor
+  woman scientist: scientist

@@ -1,0 +1,40 @@
+{
+  "name": "marga-cli",
+  "version": "0.1.1",
+  "description": "Command-line tools for the Marga learning-dashboard template.",
+  "license": "MIT",
+  "author": "meenumathew",
+  "keywords": [
+    "marga",
+    "learning",
+    "dashboard",
+    "template",
+    "nextjs",
+    "diataxis",
+    "scaffold"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meenumathew/marga.git",
+    "directory": "marga-cli"
+  },
+  "homepage": "https://github.com/meenumathew/marga#readme",
+  "bugs": {
+    "url": "https://github.com/meenumathew/marga/issues"
+  },
+  "type": "commonjs",
+  "bin": {
+    "marga": "index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

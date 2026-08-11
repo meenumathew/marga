@@ -1,0 +1,43 @@
+# Local commit guards for marga.
+#
+# Deliberately narrow: these hooks catch the things Prettier, ESLint, Vale, and
+# tsc cannot see. Formatting and prose are already enforced by `npm run
+# format:check` and `npm run docs:lint`, so they are not duplicated here — a
+# second formatter only creates rule conflicts and churn.
+#
+# Install once per clone (hooks do not travel with a git clone):
+#   pipx install pre-commit && pre-commit install
+#
+# Run against everything, not just staged files:
+#   pre-commit run --all-files
+#
+# Hooks are bypassable with `git commit --no-verify`, so treat them as a fast
+# local net, not as the gate. The gate is the full command set in README.
+exclude: ^(node_modules|\.next|out|build|coverage)/
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 2ca41cc1372d1e939a6a879f18cdc19fc1cac1ce # frozen: v8.30.0
+    hooks:
+      # The reason this file exists. This repository is a public template that
+      # people clone and fill with their own notes, and `/add-content` writes
+      # arbitrary pasted text to disk. A pasted API key is a realistic mistake.
+      - id: gitleaks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
+    hooks:
+      - id: detect-private-key
+
+      # Only newly added files are checked, so the logo PNGs already tracked in
+      # public/ never trip this. The ceiling is above their ~1.1 MB rather than
+      # the usual 500 kb because replacing those logos is a documented
+      # customization step, and a limit that blocks it would just get disabled.
+      # It still stops a dataset, video, or PDF dumped into content/.
+      - id: check-added-large-files
+        args: ["--maxkb=1200"]
+
+      - id: check-merge-conflict
+
+      # Vale's style rules and this file are YAML; a typo in either fails at
+      # run time rather than at commit time without this.
+      - id: check-yaml

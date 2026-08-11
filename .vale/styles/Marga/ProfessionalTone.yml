@@ -1,0 +1,8 @@
+extends: existence
+message: "Use clearer professional wording instead of '%s'."
+level: warning
+ignorecase: true
+tokens:
+  - "\\b(crazy|gotchas|hacky|rockstar|stupid|stuff)\\b"
+  - "hardcoding fine"
+  - "the AI did it"
